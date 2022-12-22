@@ -29,6 +29,12 @@ router.post('/', authorizationMiddleware, async (req, res) => {
     const commits = formatCommits(config.Message.Commits, data.commits)
     const pages = getPages(commits)
 
+    const embeds = []
+
+    pages.forEach((page, index) => {
+        const embed = index === 0 ? config.Message.Embed : config.Message.OverflowEmbeds
+        embeds.push(formatEmbed(embed, Object.assign({}, placeholders, { commits: page.join('\n') })))
+    })
     res.status(200).send({ success: true })
 })
 
