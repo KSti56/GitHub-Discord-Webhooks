@@ -1,0 +1,35 @@
+########################################
+#                                      #
+#                WEBSERVER             #
+#                                      #
+########################################
+Webserver:
+    IP: 127.0.0.1
+    Port: 8080
+
+########################################
+#                                      #
+#            COMMIT FORWARDING         #
+#                                      #
+########################################
+CommitForwarding:
+    # The name of the GitHub Repository
+    "ThisLightMan/GitHub-Discord-Webhooks":
+        # Ensure that the secret is unique and keep it private
+        Secret: "test1234"
+        # The webhook URL from Discord
+        Webhook: "DISCORD-WEBHOOK-URL"
+        # The message that will get sent to Discord
+        Message:
+            Title: "{push-title}"
+            URL: "{push-url}"
+            Author:
+                Text: "{author-name}"
+                Icon: "{author-icon}"
+            Description: "{commits}"
+            # What each commit in {commits} will look like
+            Commits: "[{commit-id}]({commit-url}) **{commit-message}**"
+        OverflowMessage:
+            Description: "{commits}"
+            # What each commit in {commits} will look like
+            Commits: "[{commit-id}]({commit-url}) **{commit-message}**"
