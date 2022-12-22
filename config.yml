@@ -21,6 +21,7 @@ CommitForwarding:
         Webhook: "DISCORD-WEBHOOK-URL"
         # The message that will get sent to Discord
         Message:
+            # What each commit in {commits} will look like
             Commits: "[``{commit-short-id}``]({commit-url}) **{commit-message}**"
             Embed:
                 Color: "#157ae6"
@@ -31,7 +32,6 @@ CommitForwarding:
                     URL: "{author-profile}"
                     Icon: "{author-avatar}"
                 Description: "{commits}"
-                # What each commit in {commits} will look like
             OverflowEmbeds:
                 Color: "#157ae6"
                 Description: "{commits}"
