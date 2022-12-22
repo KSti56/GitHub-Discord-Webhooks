@@ -19,17 +19,20 @@ CommitForwarding:
         Secret: "test1234"
         # The webhook URL from Discord
         Webhook: "DISCORD-WEBHOOK-URL"
+        
         # The message that will get sent to Discord
         Message:
-            Title: "{push-title}"
-            URL: "{push-url}"
-            Author:
-                Text: "{author-name}"
-                Icon: "{author-icon}"
-            Description: "{commits}"
-            # What each commit in {commits} will look like
-            Commits: "[{commit-id}]({commit-url}) **{commit-message}**"
-        OverflowMessage:
-            Description: "{commits}"
-            # What each commit in {commits} will look like
-            Commits: "[{commit-id}]({commit-url}) **{commit-message}**"
+            Commits: "[``{commit-short-id}``]({commit-url}) **{commit-message}**"
+            Embed:
+                Color: "#157ae6"
+                Title: "[{repository-name}:{branch-name}] {commit-count} new {commit-plural}"
+                URL: "{compare-url}"
+                Author:
+                    Name: "{author-name}"
+                    URL: "{author-profile}"
+                    Icon: "{author-avatar}"
+                Description: "{commits}"
+                # What each commit in {commits} will look like
+            OverflowEmbeds:
+                Color: "#157ae6"
+                Description: "{commits}"
