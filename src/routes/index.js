@@ -11,7 +11,14 @@ const express = require('express')
 const router = express.Router()
 
 // Utils
+const log = require('../lib/log')
 const { getRepositoryConfig } = require('../lib/repository')
+const getPushEventInfo = require('../lib/getPushEventInfo')
+const formatEmbed = require('../lib/formatEmbed')
+const formatCommits = require('../lib/formatCommits')
+const getPages = require('../lib/getPages')
+const webhookRequest = require('../lib/webhookRequest')
+const replacePlaceholders = require('../lib/replacePlaceholders')
 
 // Middleware
 const authorizationMiddleware = require('../lib/authorization')
@@ -35,6 +42,18 @@ router.post('/', authorizationMiddleware, async (req, res) => {
         const embed = index === 0 ? config.Message.Embed : config.Message.OverflowEmbeds
         embeds.push(formatEmbed(embed, Object.assign({}, placeholders, { commits: page.join('\n') })))
     })
+
+    webhookRequest(config.Webhook, {
+        embeds,
+        content: replacePlaceholders(config.Message.Content, placeholders)
+    })
+        .then(() => {
+            log(`Webhook message sent successfully (Repository: ${data['repository-full-name']} | Commits: ${data['commit-count']})`)
+        })
+        .catch(err => {
+            log(`Webhook message failed to send (Repository: ${data['repository-full-name']} | Commits: ${data['commit-count']}). Error: ` + err, 'error')
+        })
+
     res.status(200).send({ success: true })
 })
 

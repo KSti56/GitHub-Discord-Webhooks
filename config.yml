@@ -13,13 +13,12 @@ Webserver:
 #                                      #
 ########################################
 CommitForwarding:
-    # The name of the GitHub Repository
-    "ThisLightMan/GitHub-Discord-Webhooks":
+    # The name of the GitHub Repository (Format: ThisLightMan/GitHub-Discord-Webhooks)
+    "Your-GitHub-Repository":
         # Ensure that the secret is unique and keep it private
-        Secret: "test1234"
+        Secret: "UNIQUE-SECRET"
         # The webhook URL from Discord
         Webhook: "DISCORD-WEBHOOK-URL"
-        
         # The message that will get sent to Discord
         Message:
             Commits: "[``{commit-short-id}``]({commit-url}) **{commit-message}**"

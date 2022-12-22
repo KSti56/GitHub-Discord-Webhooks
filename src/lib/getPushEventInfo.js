@@ -5,7 +5,7 @@ const getPushEventInfo = (req) => {
     const { repository, sender, commits, compare, ref } = req.body
     return {
         // Repostitory Info
-        'branch-name' : ref.replace('refs/heads/', ''),
+        'branch-name': ref.replace('refs/heads/', ''),
         'repository-full-name': repository.full_name,
         'repository-name': repository.name,
         'repository-isprivate': repository.private,

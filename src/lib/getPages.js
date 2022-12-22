@@ -1,4 +1,4 @@
-const MAX_LENGTH = 500
+const MAX_LENGTH = 4096
 
 const calculateCharacterLength = arr => arr.join('\n').length
 
