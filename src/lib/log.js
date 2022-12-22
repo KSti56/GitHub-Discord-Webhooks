@@ -29,6 +29,11 @@ const prefixes = {
     }
 }
 
+/**
+ * Add color formatting to text
+ * @param {string} type The type of prefix
+ * @returns {string}
+ */
 const getPrefix = type => {
     const { text, color } = prefixes[type || 'info']
     if (!text || !color) return chalk.hex('#57ff6b')('[INFO]')
@@ -37,7 +42,7 @@ const getPrefix = type => {
 }
 
 /**
- *
+ * Log a message to the console and to a file
  * @param {string} message The message to log
  * @param {string} prefix The prefix to show
  */
