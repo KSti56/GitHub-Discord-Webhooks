@@ -2,9 +2,10 @@ const getPlural = (num) => num === 1 ? '' : 's'
 const getDiscordTimestamp = (timestamp) => '<t:' + Math.floor(new Date(timestamp).getTime() / 1000) + ':R>'
 
 const getPushEventInfo = (req) => {
-    const { repository, sender, commits, compare } = req.body
+    const { repository, sender, commits, compare, ref } = req.body
     return {
         // Repostitory Info
+        'branch-name' : ref.replace('refs/heads/', ''),
         'repository-full-name': repository.full_name,
         'repository-name': repository.name,
         'repository-isprivate': repository.private,
@@ -14,9 +15,9 @@ const getPushEventInfo = (req) => {
         'author-avatar': sender.avatar_url,
         'author-profile': sender.html_url,
         // Commits
-        'commit-size': commits.length,
+        'commit-count': commits.length,
         'commit-plural': 'commit' + getPlural(commits.length),
-        'push-url': compare,
+        'compare-url': compare,
         commits: commits.map(commit => {
             const { id, message, timestamp, url } = commit
             return {
