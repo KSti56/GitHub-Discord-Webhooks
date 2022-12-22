@@ -29,7 +29,6 @@ router.post('/', authorizationMiddleware, async (req, res) => {
     const config = getRepositoryConfig(req)
     if (!config) return res.status(400).send({ error: 'Bad Request' })
 
-    console.log(req.body)
     const data = getPushEventInfo(req)
 
     const placeholders = Object.assign({}, data)
