@@ -1,6 +1,6 @@
 /**
  * @name GitHub-Discord-Webhooks
- * @file Logger Utility
+ * @file Logger utility to send a message to the console and to a file
  * @author ThisLightMan <light@corebot.dev>
  * @license MIT
  * @version 1.0

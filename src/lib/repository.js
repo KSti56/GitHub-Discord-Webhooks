@@ -1,3 +1,11 @@
+/**
+ * @name GitHub-Discord-Webhooks
+ * @file Repository Utilities
+ * @author ThisLightMan <light@corebot.dev>
+ * @license MIT
+ * @version 1.0
+ */
+
 const config = require('./config')
 const log = require('./log')
 

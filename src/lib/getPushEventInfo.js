@@ -1,6 +1,30 @@
+/**
+ * @name GitHub-Discord-Webhooks
+ * @file Get and format information about the push event from GitHub webhooks
+ * @author ThisLightMan <light@corebot.dev>
+ * @license MIT
+ * @version 1.0
+ */
+
+/**
+ * Check if the number is 1, if it is, return an empty string, otherwise return 's'
+ * @param {number} num The number to check
+ * @returns {string} 's' if the number is not 1, otherwise ''
+ */
 const getPlural = (num) => num === 1 ? '' : 's'
+
+/**
+ * Convert a timestamp to Discord's relative timestamp format
+ * @param {string} timestamp The timestamp to convert
+ * @returns {string} The timestamp in Discord's format
+ */
 const getDiscordTimestamp = (timestamp) => '<t:' + Math.floor(new Date(timestamp).getTime() / 1000) + ':R>'
 
+/**
+ * Gets all the information about the push event
+ * @param {Request} req The Express request
+ * @returns {object} An object with all the information about the push event
+ */
 const getPushEventInfo = (req) => {
     const { repository, sender, commits, compare, ref } = req.body
     return {

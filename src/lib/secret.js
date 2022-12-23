@@ -1,3 +1,11 @@
+/**
+ * @name GitHub-Discord-Webhooks
+ * @file Manage secrets and hashes for authenticating GitHub webhook requests
+ * @author ThisLightMan <light@corebot.dev>
+ * @license MIT
+ * @version 1.0
+ */
+
 const { getRepositoryConfig } = require('./repository')
 const crypto = require('crypto')
 

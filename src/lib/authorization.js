@@ -1,3 +1,11 @@
+/**
+ * @name GitHub-Discord-Webhooks
+ * @file Authorization middleware to authenticate GitHub webhook requests
+ * @author ThisLightMan <light@corebot.dev>
+ * @license MIT
+ * @version 1.0
+ */
+
 const { secretIncluded, secretValid } = require('./secret')
 const { getRepositoryName } = require('./repository')
 const log = require('./log')
