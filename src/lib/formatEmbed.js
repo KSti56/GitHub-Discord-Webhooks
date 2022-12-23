@@ -14,7 +14,7 @@ const formatEmbed = (embed, placeholders) => {
         description: replacePlaceholders(embed?.Description, placeholders),
         url: replacePlaceholders(embed?.URL, placeholders),
         color: parseInt(embed?.Color?.replace(/#/g, ''), 16),
-        timestamp: embed?.Timestamp,
+        timestamp: embed?.Timestamp ? new Date().toISOString() : null,
         footer: {
             text: replacePlaceholders(embed?.Footer?.Text, placeholders),
             icon_url: replacePlaceholders(embed?.Footer?.Icon, placeholders)
